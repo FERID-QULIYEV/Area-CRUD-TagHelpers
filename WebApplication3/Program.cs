@@ -1,3 +1,5 @@
+using WebApplication3.Models;
+
 namespace WebApplication3
 {
     public class Program
@@ -11,8 +13,11 @@ namespace WebApplication3
             app.UseRouting();
             app.UseStaticFiles();
 
-            app.MapControllerRoute("Default", "{Controller=Home}/{Action=Index}/{id?}");
+            app.MapControllerRoute(name: "areas", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+            app.MapControllerRoute(name:"Default", pattern:"{Controller=Home}/{Action=Index}/{id?}");
+            
             app.Run();
+            List<Employee> employees = new List<Employee> ();
         }
     }
 }
